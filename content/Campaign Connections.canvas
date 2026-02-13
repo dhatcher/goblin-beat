@@ -1,8 +1,8 @@
 {
 	"nodes":[
-		{"id":"51faeacf5e9ad43b","x":-440,"y":-200,"width":250,"height":60,"type":"text","text":"[[content/campaigns/Daring-Deeds-Division/index|index]]"},
-		{"id":"9b9de2f40262a218","x":60,"y":-200,"width":250,"height":60,"type":"text","text":"[[content/campaigns/Friday-Knights/index|index]]"},
-		{"id":"f0f3c1a8145ac631","x":-190,"y":-20,"width":250,"height":60,"type":"text","text":"Greyhawk"}
+		{"id":"51faeacf5e9ad43b","type":"text","text":"[[campaigns/Daring-Deeds-Division/index|Daring Deeds Division]]","x":-440,"y":-200,"width":250,"height":60},
+		{"id":"9b9de2f40262a218","type":"text","text":"[[campaigns/Friday-Knights/index|Friday Knights]]","x":60,"y":-200,"width":250,"height":60},
+		{"id":"f0f3c1a8145ac631","type":"text","text":"Greyhawk","x":-190,"y":-20,"width":250,"height":60}
 	],
 	"edges":[
 		{"id":"4bddc3bae434952e","fromNode":"51faeacf5e9ad43b","fromSide":"bottom","toNode":"f0f3c1a8145ac631","toSide":"left"},

@@ -11,8 +11,8 @@ tags:
 # Daring Deeds Division
 
 > [!info] Campaign Details
-> **DM:** Danny
-> **Setting:** Setting / World Name
+> **DM:** Danny  
+> **Setting:** Setting / World Name  
 > **Status:** Active
 
 ## World Overview

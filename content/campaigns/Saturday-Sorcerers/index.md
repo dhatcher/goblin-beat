@@ -12,9 +12,9 @@ tags:
 # Saturday Sorcerers
 
 > [!info] Campaign Details
-> **DM:** Archmage Dave
-> **Setting:** The Sword Coast, Faerûn
-> **Status:** Active
+> **DM:** Archmage Dave  
+> **Setting:** The Sword Coast, Faerûn  
+> **Status:** Active  
 > **Schedule:** Every Saturday, 6 PM
 
 ## World Overview

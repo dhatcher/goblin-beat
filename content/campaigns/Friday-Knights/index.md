@@ -11,8 +11,8 @@ tags:
 # Friday Knights
 
 > [!info] Campaign Details
-> **DM:** Dungeon Master Name
-> **Setting:** Setting / World Name
+> **DM:** Dungeon Master Name  
+> **Setting:** Setting / World Name  
 > **Status:** Active
 
 ## World Overview

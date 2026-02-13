@@ -8,7 +8,9 @@ Your party's shared tome of knowledge. Everything you need to remember about the
 
 ## 🎲 Campaigns
 
-- [[content/campaigns/Saturday-Sorcerers/index|Saturday Sorcerers]] — The Sword Coast, run by Archmage Dave
+- [[campaigns/Daring-Deeds-Division/index|Daring Deeds Division]] — Greyhawk, run by Danny
+- [[campaigns/Friday-Knights/index|Friday Knights]] — Active campaign
+- [[campaigns/Saturday-Sorcerers/index|Saturday Sorcerers]] — The Sword Coast, run by Archmage Dave
 
 > [!tip] Adding a new campaign
 > Create a new folder under `campaigns/` with subfolders for `characters/`, `locations/`, and `sessions/`, plus an `index.md` overview page. Check the `_templates/Campaign.md` template for the recommended structure.

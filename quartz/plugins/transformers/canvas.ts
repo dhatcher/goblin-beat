@@ -1,6 +1,8 @@
 import { QuartzTransformerPlugin } from "../types"
 import { parseCanvasData } from "./canvas-utils"
 import { renderCanvasToHtml, renderCanvasError } from "./canvas-renderer"
+// @ts-ignore
+import canvasScript from "./canvas-graph.inline"
 
 /**
  * Quartz transformer plugin for Obsidian .canvas files.
@@ -57,11 +59,22 @@ export const CanvasTransformer: QuartzTransformerPlugin = () => ({
   },
   externalResources() {
     return {
+      css: [
+        {
+          content: `.canvas-graph-svg .canvas-node-g.canvas-clickable text { fill: var(--secondary) !important; }`,
+          inline: true,
+        },
+      ],
       js: [
         {
           src: "https://d3js.org/d3.v7.min.js",
           loadTime: "afterDOMReady",
           contentType: "external",
+        },
+        {
+          script: canvasScript,
+          loadTime: "afterDOMReady",
+          contentType: "inline",
         },
       ],
     }

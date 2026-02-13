@@ -46,6 +46,11 @@ interface CanvasGraphOptions {
 
 // ── Color palette ───────────────────────────────────────────────────────────
 
+// Read the site's link color from CSS variables at runtime
+function getLinkColor(): string {
+  return "var(--secondary)"
+}
+
 const NODE_COLORS: Record<string, { fill: string; stroke: string; text: string }> = {
   text: { fill: "#2a2a3e", stroke: "#8888aa", text: "#ccccdd" },
   file: { fill: "#1a2a4e", stroke: "#4a8af4", text: "#8ab4f8" },
@@ -269,15 +274,26 @@ function renderCanvasGraph(options: CanvasGraphOptions): void {
       .attr("ry", 6)
       .attr("data-node-id", node.id)
 
-    // Node label text
+    // Determine if this node is clickable (has a link target)
+    const isClickable =
+      (node.type === "file" && !!node.file) ||
+      (node.type === "text" && !!node.text?.match(/\[\[([^\]|]+)/)) ||
+      (node.type === "link" && !!node.url)
+
+    if (isClickable) {
+      g.classed("canvas-clickable", true)
+    }
+
+    // Node label text — use site link color for clickable nodes
     const label = getNodeLabel(node)
+    const textColor = isClickable ? getLinkColor() : colors.text
     if (label) {
       g.append("text")
         .attr("x", node.x + node.width / 2)
         .attr("y", node.y + node.height / 2)
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "central")
-        .attr("fill", colors.text)
+        .attr("fill", textColor)
         .attr("font-size", "13px")
         .each(function (this: SVGTextElement) {
           wrapText(_d3.select(this), label, node.width - 16)
@@ -298,6 +314,25 @@ function renderCanvasGraph(options: CanvasGraphOptions): void {
       }).on("mouseleave", () => {
         fileG.select("rect").attr("stroke-width", 2)
       })
+    }
+
+    // Make text nodes with wikilinks clickable
+    if (node.type === "text" && node.text) {
+      const wikiMatch = node.text.match(/\[\[([^\]|]+)/)
+      if (wikiMatch) {
+        const linkPath = wikiMatch[1]
+        const href = resolveFileUrl(baseUrl, linkPath)
+        g.attr("cursor", "pointer").on("click", () => {
+          window.location.href = href
+        })
+
+        const textG = g
+        textG.on("mouseenter", () => {
+          textG.select("rect").attr("stroke-width", 3)
+        }).on("mouseleave", () => {
+          textG.select("rect").attr("stroke-width", 2)
+        })
+      }
     }
 
     // Make link nodes clickable
@@ -321,8 +356,11 @@ function renderCanvasGraph(options: CanvasGraphOptions): void {
 /** Get display label for a node based on its type. */
 function getNodeLabel(node: CanvasNode): string {
   switch (node.type) {
-    case "text":
-      return node.text || ""
+    case "text": {
+      // Extract display text from wikilinks like [[path|Display Name]]
+      const text = node.text || ""
+      return text.replace(/\[\[([^\]]*?\|)?([^\]]+)\]\]/g, "$2")
+    }
     case "file":
       return node.file ? node.file.replace(/\.md$/, "").split("/").pop() || node.file : ""
     case "link":
@@ -411,15 +449,18 @@ function wrapText(textEl: any, text: string, maxWidth: number): void {
   textEl.select("tspan").attr("dy", `${offset}em`)
 }
 
-// ── Auto-execute on DOM ready ───────────────────────────────────────────────
+// ── Auto-execute on DOM ready and SPA navigation ────────────────────────────
 
 function initCanvasGraph(): void {
-  const dataEl = document.getElementById("canvas-data")
-  if (!dataEl) return
+  const container = document.getElementById("canvas-graph")
+  if (!container) return
+
+  const rawData = container.getAttribute("data-canvas")
+  if (!rawData) return
 
   let canvasData: CanvasData
   try {
-    canvasData = JSON.parse(dataEl.textContent || "")
+    canvasData = JSON.parse(rawData)
   } catch {
     return
   }
@@ -438,9 +479,10 @@ function initCanvasGraph(): void {
   })
 }
 
-// Run when DOM is ready
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initCanvasGraph)
-} else {
+// Re-initialize on Quartz SPA navigation
+document.addEventListener("nav", () => {
   initCanvasGraph()
-}
+})
+
+// Also run on initial page load
+initCanvasGraph()

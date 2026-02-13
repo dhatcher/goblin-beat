@@ -134,14 +134,13 @@ export function renderCanvasToHtml(data: CanvasData, baseUrl: string): string {
     ? `<svg class="canvas-edges">\n${edgesHtml}\n</svg>`
     : `<svg class="canvas-edges"></svg>`
 
-  // Embed canvas data as JSON for D3.js client-side rendering
-  const jsonBlob = JSON.stringify(data)
+  // Embed canvas data as JSON in a data attribute (avoids rehype entity-encoding issues with script tags)
+  const jsonBlob = escapeHtml(JSON.stringify(data))
 
   return (
-    `<div id="canvas-graph" class="canvas-container">\n` +
+    `<div id="canvas-graph" class="canvas-container" data-canvas="${jsonBlob}">\n` +
     `<div class="canvas-nodes">\n${nodesHtml}\n</div>\n` +
     `${svgSection}\n` +
-    `</div>\n` +
-    `<script type="application/json" id="canvas-data">${jsonBlob}</script>`
+    `</div>`
   )
 }
