@@ -1,0 +1,20 @@
+# Obsidian
+.obsidian/
+
+# Dependencies
+node_modules/
+
+# Quartz build output
+public/
+.quartz-cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
