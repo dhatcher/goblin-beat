@@ -18,7 +18,7 @@ const config: QuartzConfig = {
     enablePopovers: true,
     analytics: null,
     locale: "en-US",
-    baseUrl: "localhost:8080",
+    baseUrl: "dhatcher.github.io/goblin-beat",
     ignorePatterns: ["private"],
     defaultDateType: "created",
     theme: {
