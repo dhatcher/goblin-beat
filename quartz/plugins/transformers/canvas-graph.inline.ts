@@ -374,9 +374,12 @@ function getNodeLabel(node: CanvasNode): string {
 
 /** Resolve a vault file path to a site URL. */
 function resolveFileUrl(baseUrl: string, filePath: string): string {
-  const normalized = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl
-  const stripped = filePath.endsWith(".md") ? filePath.slice(0, -3) : filePath
-  return `${normalized}/${stripped}`
+  const base = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl
+  let stripped = filePath.endsWith(".md") ? filePath.slice(0, -3) : filePath
+  // Strip trailing /index — Quartz serves folder pages at the folder path
+  stripped = stripped.replace(/\/index$/, "/")
+  // Clean up double slashes
+  return `${base}/${stripped}`.replace(/\/+/g, "/")
 }
 
 /** Calculate arrowhead polygon points at the end of a line. */
@@ -467,10 +470,17 @@ function initCanvasGraph(): void {
 
   if (!canvasData || !canvasData.nodes || !canvasData.edges) return
 
-  // Determine base URL from the page's meta or default to current origin
-  const baseUrl =
-    document.querySelector<HTMLMetaElement>('meta[name="base-url"]')?.content ||
-    window.location.origin
+  // Derive base path from current URL and the page slug
+  // e.g. pathname="/goblin-beat/Campaign-Connections", slug="Campaign-Connections" → base="/goblin-beat"
+  const slug = document.body.getAttribute("data-slug") ?? ""
+  let baseUrl = ""
+  if (slug) {
+    const pathname = window.location.pathname
+    const slugIdx = pathname.lastIndexOf(slug)
+    if (slugIdx > 0) {
+      baseUrl = pathname.slice(0, slugIdx).replace(/\/+$/, "")
+    }
+  }
 
   renderCanvasGraph({
     containerId: "canvas-graph",

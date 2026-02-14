@@ -17,9 +17,17 @@ function escapeHtml(str: string): string {
 
 /** Resolve a vault file path to a site URL (strip .md extension). */
 function resolveFileUrl(baseUrl: string, filePath: string): string {
-  const normalized = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl
-  const stripped = filePath.endsWith(".md") ? filePath.slice(0, -3) : filePath
-  return `${normalized}/${stripped}`
+  // baseUrl from config is like "dhatcher.github.io/goblin-beat" — extract just the path part
+  let pathPrefix = ""
+  if (baseUrl) {
+    // If it contains a slash after the domain, extract the path portion
+    const slashIdx = baseUrl.indexOf("/")
+    pathPrefix = slashIdx !== -1 ? baseUrl.slice(slashIdx) : ""
+  }
+  const base = pathPrefix.endsWith("/") ? pathPrefix.slice(0, -1) : pathPrefix
+  let stripped = filePath.endsWith(".md") ? filePath.slice(0, -3) : filePath
+  stripped = stripped.replace(/\/index$/, "/")
+  return `${base}/${stripped}`.replace(/\/+/g, "/")
 }
 
 // ── Node renderers ──────────────────────────────────────────────────────────

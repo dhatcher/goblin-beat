@@ -33,7 +33,7 @@ Describe the world, its history, and the current state of affairs. What makes th
 
 Key locations in the campaign world:
 
-- [[locations/Location Name]] — Brief description
+- [[The Keep On The Borderlands]] — Brief description
 - [[locations/Location Name]] — Brief description
 - [[locations/Location Name]] — Brief description
 
