@@ -59,6 +59,8 @@ Notable non-player characters:
 
 ## Notes of Pardus
 
+<img src="last-view.png" height="300px" alt="E4">
+
 - Loverr returns!
 - We tangle with a Carrion Crawler and trade the remains to Nothic for a sweet Cape of Billowing. It's a good thing Loverr speaks Undercommon.
 - Malu gets a new helmet after Loverr flexes her lock picking skillz. Seriously, how did E4 manage to stay alive without dragon backup?
