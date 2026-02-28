@@ -59,10 +59,18 @@ Notable non-player characters:
 
 ## Notes of Pardus
 
+<div style="text-align: center">
+
 <img src="last-view.png" height="300px" alt="E4">
 
-- Loverr returns!
-- We tangle with a Carrion Crawler and trade the remains to Nothic for a sweet Cape of Billowing. It's a good thing Loverr speaks Undercommon.
-- Malu gets a new helmet after Loverr flexes her lock picking skillz. Seriously, how did E4 manage to stay alive without dragon backup?
-- We explore a new section of The Caves of Chaos and end up slapping around a couple of Bugbears who were in the middle of making a terrible map. The group decides to continue our tradition of taking a nap in a room filled the bodies of our enemies.
-- The E4 hoard is now up to 315 GP and a collection of dope artifacts.
+<br />
+
+E4 wakes up to a goblin log ambush in The Caves of Chaos and learns that combat can be scary.
+
+One of the strange animal trophies spits some kind of goop on Loverr. It's probably fiiiine.
+
+After recovering from the Home Alone shenanigans and evil moose spit, we distribute some standard E4 slappin (Spider Rue!) before collecting an invisibility potion and a murder bow.
+
+We take a tactical retreat back to The Keep and get the Iron Tome back to Elandra. She tells us that our efforts should uncover the exact locus of nonsense we've been tracking for days.
+
+</div>
