@@ -59,18 +59,20 @@ Notable non-player characters:
 
 ## Notes of Pardus
 
-<div style="text-align: center">
-
 <img src="last-view.png" height="300px" alt="E4">
 
 <br />
 
-E4 wakes up to a goblin log ambush in The Caves of Chaos and learns that combat can be scary.
+Elandra translates the Iron Tome and confirms the exact location of The Cult of Chaos.
 
-One of the strange animal trophies spits some kind of goop on Loverr. It's probably fiiiine.
+Inside The Caves, E4 nabs a fancy goblet from a couple of acidic blobs.
 
-After recovering from the Home Alone shenanigans and evil moose spit, we distribute some standard E4 slappin (Spider Rue!) before collecting an invisibility potion and a murder bow.
+Rue is able to reason with an Owlbear and secures a super sneaky ambush on the cultists.
 
-We take a tactical retreat back to The Keep and get the Iron Tome back to Elandra. She tells us that our efforts should uncover the exact locus of nonsense we've been tracking for days.
+E4 finds 4 cult homies asleep and we continue the nabbery with their outfits, after administering the standard slapping.
 
-</div>
+With the costumes, we manage to sneak Rue, as a Giant Spider, past Narthus the Bellringer.
+
+E4 delivers the final blow to The Cult of Chaos by destroying Ivlis in her demonic study.
+
+Back at the The Keep, we are declared Defenders of the Keep and they throw us a dope party.
